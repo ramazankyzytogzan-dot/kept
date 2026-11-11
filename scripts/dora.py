@@ -19,7 +19,7 @@ if response.status_code == 200:
     ok = runs[
         (runs["conclusion"] == "success") & (runs["head_branch"] == "main")
     ]
-    ok.loc[:, "created_at"] = pd.to_datetime(ok["created_at"])
+    ok = ok.assign(created_at=pd.to_datetime(ok["created_at"]))
     print("Всего успешных запусков на main:", len(ok))
     if not ok.empty:
       print(
