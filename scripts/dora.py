@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import requests
 
-# Укажите ваш репозиторий
+# Ваш репозиторий
 REPO = "ramazankyzytozan-dot/kept"
 
 # Токен берется из переменных окружения
