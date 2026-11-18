@@ -40,7 +40,8 @@
   .\k6-v0.49.0-windows-amd64\k6.exe run load-test.js
   ```
 
-- **Скриншот:** `screenshots/k6-results.png`
+- **Скриншот:** ![Uploading image.png…]()
+
 
 ### 2.4. Тесттік деректерді генерациялау
 
