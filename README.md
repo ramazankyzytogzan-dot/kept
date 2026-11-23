@@ -1,16 +1,89 @@
-# React + Vite
+# Лабораториялық жұмысты орындау есебі (Практикалық нәтижелер және әкімшілік бөлім)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Бұл репозиторийде веб-қосымшаны автоматтандырылған тестілеу, мониторинг, жүктемелік тестілеу және нақты ортадағы сынақ нәтижелері жинақталған.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 1. Техникалық стек және құралдар
 
-## React Compiler
+- **Фронтенд / Қосымша:** React, Vite (`http://localhost:5173`)
+- **Тестілеу:** Python, Playwright, pytest, Chrome
+- **Мониторинг:** Docker, Uptime Kuma (`http://localhost:3001`)
+- **Нагрузочный тест:** k6
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## 2. Практикалық нәтижелер және іске қосу командалары
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+### 2.1. Интерфейсті автоматтандырылған тестілеу (Playwright)
+
+- **Нәтижелер:** Веб-қосымшаның функционалына автоматты тесттер сәтті өткізілді. 5 тест өткізіліп (`test_sam.py`), барлығы сәтті аяқталды (**5 PASSED**, 10.77 секундта). Авторизация (Login/Registration), форманы тексеру (Form Validation) және жүйеден шығу (Logout) сценарийлері тексерілді.
+- **Іске қосу командасы:**
+
+  ```bash
+  pytest test_sam.py -v
+  ```
+
+### 2.2. Қолжетімділікті мониторингтеу (Uptime Kuma)
+
+- **Нәтижелер:** Локалды сервисті бақылайтын мониторинг контейнері іске қосылды.
+- **Анықталған инцидент:** Бастапқыда контейнер ішінен `127.0.0.1:5173` адресіне қол жеткізу мүмкін болмағандықтан, монитор қате (`ECONNREFUSED` / қызыл статус) көрсетті. Мәселе `host.docker.internal` қолдану арқылы шешіліп, статус тұрақты жасыл түске (`200 - OK`) ауыстырылды.
+- **Іске қосу / Тексеру:** Docker Desktop арқылы Uptime Kuma іске қосылып, `http://localhost:3001` арқылы тексеріледі.
+- **Скриншот:** `screenshots/uptime-kuma.png`
+
+### 2.3. Жүктемелік тестілеу (k6)
+
+- **Нәтижелер:** Жүктемелік сценарий сәтті орындалды (5 виртуалды қолданушы, 50 сұраныс). Метрикалар: 100% сәтті сұраныстар (`checks: 100%`, `http_req_failed: 0%`), орташа жауап беру уақыты ~10.13 мс.
+- **Іске қосу командасы:**
+
+  ```powershell
+  .\k6-v0.49.0-windows-amd64\k6.exe run load-test.js
+  ```
+
+- **Скриншот:** ![Uploading image.png…]()
+
+
+### 2.4. Тесттік деректерді генерациялау
+
+- **Нәтижелер:** Фиксирленген тұқыммен (`random.seed(42)`) деректерді генерациялау скрипті тексеріліп, сәтті іске қосылды.
+- **Іске қосу командасы:**
+
+  ```bash
+  python generate_data.py
+  ```
+
+---
+
+## 3. Әкімшілік және интерактивті процесстер
+
+### 3.1. UAT (User Acceptance Testing)
+
+- **Статус:** Өткізілген жоқ (сессия ұйымдастырылмады).
+- **Түсіндірме:** Басқа командамен немесе сыртқы қатысушымен UAT сессиясы өткізілген жоқ. Жұмыс жеке форматта орындалғандықтан, бұл бөлім талапқа сай жүзеге асырылмады.
+
+### 3.2. Runbook (Инструкция және оны тексеру)
+
+- **Инструкцияны тәуелсіз тұлғаның тексеруі:** Өткізілген жоқ (уақыты өлшенбеді).
+- **Жұмыс істейтін қосылу қадамдары (инцидентті ескере отырып):**
+  1. Docker Desktop арқылы Uptime Kuma іске қосу (`http://localhost:3001`).
+  2. Терминалда Vite серверін сыртқы қосылымдарға ашып көтеру:
+
+     ```bash
+     npm run dev -- --host
+     ```
+
+  3. Uptime Kuma мониторінде `http://host.docker.internal:5173` адресін көрсету (бұл контейнер ішінен локалды хостқа дұрыс өтуді қамтамасыз етеді).
+
+### 3.3. Трекер және тикеттер (GitHub Issues)
+
+Инцидент бойынша нақты тикет:
+
+| Тикет | Сипаттама | Приоритет | Мерзімі | Жауапты |
+|---|---|---|---|---|
+| Issue #1: Uptime Kuma мониторындағы `ECONNREFUSED` қатесін түзету | Контейнер ішінен `127.0.0.1` адресіне сұраныс өтпеді | Жоғары (High) | 1 күн | DevOps / Developer |
+
+### 3.4. Бэклог командасы (нақты инциденттен туындаған әрекеттер)
+
+1. Docker ішіндегі контейнерлердің хост машинамен байланысу ережесін (`host.docker.internal`) Runbook нұсқаулығына міндетті түрде енгізу.
+2. Vite серверін іске қосу скриптіне `--host` флагын қосып конфигурациялау.
+3. Uptime Kuma-да монитор құлаған кезде хабарлама (email / Telegram) жіберуді қосу, сонда ұқсас инцидент бірден байқалады.
