@@ -36,11 +36,6 @@ create policy "Users can insert their own photos."
   on public.photos for insert
   with check (auth.uid() = user_id);
  
--- Удаление (нужно, если в приложении есть кнопка «удалить»):
--- create policy "Users can delete their own photos."
---   on public.photos for delete
---   using (auth.uid() = user_id);
- 
 -- 4. Хранилище файлов (Storage)
 -- TODO: указать имя bucket и политики Storage (Storage -> Policies).
 -- Они хранятся отдельно от таблиц.
