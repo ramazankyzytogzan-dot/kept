@@ -103,8 +103,7 @@ Uptime Kuma запущен в Docker и каждые 60 секунд прове�
 python generate_data.py
 ```
 <div align="center">
-  <img src="docs/images/system-monitoring.png" alt="Мониторинг системы" width="90%">
+  <img src="https://raw.githubusercontent.com/ramazankyzytogzan-dot/kept/main/docs/images/system-monitoring.png" alt="Мониторинг системы" width="90%">
   <br>
   <i>Мониторинг системы</i>
 </div>
- 
