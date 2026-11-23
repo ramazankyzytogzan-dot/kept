@@ -21,6 +21,7 @@
 | Раздел | Что внутри |
 |---|---|
 | [Тестирование](docs/TESTING.md) | UI-тесты, нагрузочные тесты k6, генерация тестовых данных |
+| [Backend (Supabase)](supabase/schema.sql) | схема таблиц, Row Level Security и политики доступа |
 | [Мониторинг в облаке](docs/MONITORING.md) | алармы OCI, проверка алерта искусственной нагрузкой, письмо-уведомление |
  
 ## Ключевые результаты
@@ -42,6 +43,17 @@
 | Мониторинг | Oracle Cloud Monitoring |
 | Инфраструктура | Docker, nginx, GitHub Actions, Kubernetes (OKE) |
  
+## Backend (Supabase)
+ 
+Backend построен на Supabase: авторизация, база данных PostgreSQL и хранилище файлов. Схема таблиц и политик доступа лежит в [`supabase/schema.sql`](supabase/schema.sql).
+ 
+**Как поднять свой backend:**
+1. Создать проект на [supabase.com](https://supabase.com).
+2. В **SQL Editor** выполнить `supabase/schema.sql` (таблицы, RLS, политики).
+3. Создать bucket для изображений в **Storage** (см. `TODO` в схеме).
+4. Скопировать `.env.example` в `.env` и вписать URL и anon key проекта.
+**Безопасность данных:** на таблице `photos` включён Row Level Security. Каждый пользователь видит и добавляет только свои фотографии (`auth.uid() = user_id`). Изоляцию проверила вручную: новый пользователь не видит фотографии другого аккаунта.
+ 
 ## Как запустить
  
 **1. Установить зависимости и создать файл `.env`:**
@@ -52,7 +64,7 @@ npm install
 VITE_SUPABASE_URL=...
 VITE_SUPABASE_ANON_KEY=...
 ```
-Реальные ключи в репозиторий не добавляются, файл `.env` указан в `.gitignore`.
+Скопируйте `.env.example` в `.env` и впишите значения своего проекта Supabase. Реальные ключи в репозиторий не добавляются, файл `.env` указан в `.gitignore`.
  
 **2. Запустить приложение:**
 ```bash
@@ -76,6 +88,7 @@ pytest test_sam.py -v
 ```
 ├── src/               исходный код приложения
 ├── docs/              TESTING.md, MONITORING.md, скриншоты
+├── supabase/          schema.sql (таблицы, RLS, политики)
 ├── tests/ , scripts/  тесты и вспомогательные скрипты
 ├── .github/workflows/ CI (GitHub Actions)
 ├── Dockerfile         сборка приложения (Node + nginx)
@@ -85,6 +98,7 @@ pytest test_sam.py -v
  
 ## Ограничения и планы
  
+- Схема backend описана не полностью: политики таблицы `profiles` и настройки Storage отмечены `TODO` в `schema.sql`.
 - Нагрузочные тесты шли на frontend, запросы к Supabase не входили в сценарий.
 - Порог алерта CPU в OCI занижен намеренно, чтобы показать срабатывание на демонстрации.
 - В планах: нагрузочный тест на реальный backend, деплой на Vercel и запуск UI-тестов в CI.
