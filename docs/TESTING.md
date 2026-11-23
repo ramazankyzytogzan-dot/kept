@@ -102,5 +102,9 @@ Uptime Kuma запущен в Docker и каждые 60 секунд прове�
 ```bash
 python generate_data.py
 ```
- ![Мониторинг системы](docs/images/system-monitoring.png)
+<div align="center">
+  <img src="docs/images/system-monitoring.png" alt="Мониторинг системы" width="90%">
+  <br>
+  <i>Мониторинг системы</i>
+</div>
  
