@@ -7,7 +7,7 @@
 <div align="center">
   <img src="docs/images/ui/login-screen.png" alt="Экран входа в фотогалерею" width="85%">
   <br>
-  <i>Экран входа в приватную фотогалерею</i>
+  <i>Экран входа в фотогалерею</i>
 </div>
 
 <br>
