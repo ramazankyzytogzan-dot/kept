@@ -45,9 +45,29 @@ pytest tests/test_sam.py -v
 | 25 | 20 с | 500 | 24.49 | 13.85 мс | 10.76 мс | 34.23 мс | 52.95 мс | 0% |
 | 50 | 30 с | 1500 | 49.06 | 13.52 мс | 11.44 мс | 36.19 мс | 53.89 мс | 0% |
  
-![k6, 10 VU](images/testing/k6-10vus.jpg)
-![k6, 25 VU](images/testing/k6-25vus.jpg)
-![k6, 50 VU](images/testing/k6-50vus.jpg)
+<div align="center">
+  <img src="images/testing/k6-10vus.jpg" alt="k6, 10 VU" width="85%">
+  <br>
+  <i>Нагрузочный тест k6: 10 виртуальных пользователей (VU)</i>
+</div>
+
+<br>
+
+<div align="center">
+  <img src="images/testing/k6-25vus.jpg" alt="k6, 25 VU" width="85%">
+  <br>
+  <i>Нагрузочный тест k6: 25 виртуальных пользователей (VU)</i>
+</div>
+
+<br>
+
+<div align="center">
+  <img src="images/testing/k6-50vus.jpg" alt="k6, 50 VU" width="85%">
+  <br>
+  <i>Нагрузочный тест k6: 50 виртуальных пользователей (VU)</i>
+</div>
+
+<br>
  
 ### Stress и spike
  
