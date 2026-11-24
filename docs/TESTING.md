@@ -7,7 +7,7 @@
 ## Инструменты
 
 - Playwright и pytest для UI-тестов
-- k6 для нагрузочных тестов
+- k6 для нагрузочных тестов (устанавливается отдельно, в репозитории его нет)
 - Python для генерации тестовых данных
 
 ## UI-тесты
@@ -28,8 +28,8 @@
 
 ```bash
 pytest tests/test_sam.py -v
-
 ```
+
 <div align="center">
   <img src="images/testing/pytest-sam.png" alt="Результат pytest" width="85%">
   <br>
@@ -73,6 +73,9 @@ pytest tests/test_sam.py -v
   <br>
   <i>Нагрузочный тест k6: 50 виртуальных пользователей (VU)</i>
 </div>
+
+<br>
+
 ### Stress и spike
 
 Stress поднимает нагрузку ступенями до 150 пользователей. Spike резко увеличивает нагрузку, максимум в нём 120 пользователей.
@@ -100,9 +103,8 @@ Stress поднимает нагрузку ступенями до 150 поль�
 
 Запуск на примере stress-теста:
 
-```powershell
-.\tests\k6-v0.49.0-windows-amd64\k6.exe run --summary-export=reports/res_stress.json tests/stress-test.js
-
+```bash
+k6 run --summary-export=reports/res_stress.json tests/stress-test.js
 ```
 
 Скрипты нагрузочных тестов находятся в каталоге `tests/` (`load-test.js`, `stress-test.js`, `spike-test.js`), а сводки запусков сохраняются в `reports/` (`res_*.json`).
@@ -120,10 +122,8 @@ Stress поднимает нагрузку ступенями до 150 поль�
 
 ```bash
 python tests/generate_data.py
-
 ```
 
-<br>
 <div align="center">
   <img src="images/testing/mock-data-gen.jpg" alt="Генерация данных" width="85%">
   <br>
@@ -136,4 +136,6 @@ python tests/generate_data.py
 
 * Нагрузка шла на фронтенд, Supabase в тестах не участвовал.
 * Тесты запускались на локальной машине, в облаке нагрузку не проверяла.
-
+* Нагрузка шла на dev-сервер Vite, а не на собранную версию за nginx, поэтому на продакшене цифры могут отличаться.
+* Нагрузку создавал тот же компьютер, на котором работал сервер, так что они делили ресурсы.
+* UI-тесты проверяют вход, валидацию формы и выход. Загрузку фото и работу галереи они не покрывают.
