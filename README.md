@@ -11,7 +11,7 @@
 </div>
 
 <br>
-<br>
+<br> 
 
 <div align="center">
   <img src="docs/images/ui/sam-gallery-view.png" alt="Галерея после входа пользователя Togy" width="85%">
