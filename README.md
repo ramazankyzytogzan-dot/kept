@@ -79,7 +79,7 @@ docker run -p 8080:80 kept
 Тесты:
 
 ```bash
-pytest test_sam.py -v
+pytest tests/test_sam.py -v
 ```
 
 ## Из чего сделано
