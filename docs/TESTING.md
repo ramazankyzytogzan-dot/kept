@@ -29,7 +29,13 @@
 pytest tests/test_sam.py -v
 ```
  
-![Результат pytest](images/testing/pytest-sam.png)
+<div align="center">
+  <img src="images/testing/pytest-sam.png" alt="Результат pytest" width="85%">
+  <br>
+  <i>Результат прохождения автотестов pytest</i>
+</div>
+
+<br>
  
 ## Нагрузочные тесты
  
