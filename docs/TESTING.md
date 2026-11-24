@@ -82,6 +82,22 @@ Stress поднимает нагрузку ступенями до 150 поль�
 | Stress | 150 | 1 мин 50 с | 6220 | 56.1 | 13.97 мс | 7.15 мс | 48.76 мс | 208.41 мс | 0% |
 | Spike | 120 | 1 мин 20 с | 3943 | 49.1 | 18.84 мс | 10.35 мс | 65.15 мс | 201.75 мс | 0% |
 
+<div align="center">
+  <img src="docs/images/testing/k6-stress.jpg" alt="k6, stress" width="85%">
+  <br>
+  <i>Нагрузочный тест k6: сценарий Stress (до 150 VU)</i>
+</div>
+
+<br>
+
+<div align="center">
+  <img src="docs/images/testing/k6-spike.jpg" alt="k6, spike" width="85%">
+  <br>
+  <i>Нагрузочный тест k6: сценарий Spike (до 120 VU)</i>
+</div>
+
+<br>
+
 Запуск на примере stress-теста:
 
 ```powershell
@@ -106,6 +122,13 @@ Stress поднимает нагрузку ступенями до 150 поль�
 python tests/generate_data.py
 
 ```
+<div align="center">
+  <img src="docs/images/testing/mock-data-gen.jpg" alt="Генерация данных" width="85%">
+  <br>
+  <i>Генерация тестовых данных скриптом tests/generate_data.py</i>
+</div>
+
+<br>
 
 ## Ограничения
 
