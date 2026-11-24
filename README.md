@@ -5,7 +5,7 @@
 <br>
 
 <div align="center">
-  <img src="docs/images/ui/login-screen.png" alt="Экран входа в приватную фотогалерею" width="85%">
+  <img src="docs/images/ui/login-screen.png" alt="Экран входа в фотогалерею" width="85%">
   <br>
   <i>Экран входа в приватную фотогалерею</i>
 </div>
@@ -16,7 +16,7 @@
 <div align="center">
   <img src="docs/images/ui/sam-gallery-view.png" alt="Галерея после входа пользователя Togy" width="85%">
   <br>
-  <i>Интерфейс галереи после успешной авторизации (Togy / SAM-10)</i>
+  <i>Интерфейс галереи после успешной авторизации</i>
 </div>
 
 <br>
