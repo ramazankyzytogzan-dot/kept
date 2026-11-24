@@ -61,7 +61,7 @@
 Я снова создала нагрузку на процессор. Аларм перешёл в состояние Firing и на почту пришло уведомление. После снятия нагрузки аларм вернулся в состояние OK.
 
 <div align="center">
-  <img src="images/monitoring/cpu-alert-firing.png" alt="Аларм сработал" width="85%">
+  <img src="images/monitoring/cpu-alert-firing.png" alt="Аларм сработал" width="60%">
   <br>
   <i>Аларм сработал (Firing)</i>
 </div>
@@ -69,13 +69,12 @@
 <br>
 
 <div align="center">
-  <img src="images/monitoring/cpu-alert-ok.png" alt="Аларм вернулся в норму" width="85%">
+  <img src="images/monitoring/cpu-alert-ok.png" alt="Аларм вернулся в норму" width="60%">
   <br>
   <i>Нагрузка снята, аларм вернулся в состояние OK</i>
 </div>
 
 <br>
-
 ## Ограничения
 
 * Порог аларма по CPU я поставила совсем низкий, чтобы он точно сработал на показе. В реальной системе порог был бы выше, иначе уведомления приходили бы слишком часто.
