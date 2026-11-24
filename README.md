@@ -6,6 +6,10 @@
 
 ![Экран входа в галерею](docs/images/ui/login-screen.png)
 
+Главная страница после успешного входа пользователя `Togy` (`SAM-10`):
+
+![Галерея после входа](docs/images/ui/sam-gallery-view.png)
+
 ## Над чем я работала
 
 Фронтенд взят из открытого проекта: [оригинальный репозиторий](https://github.com/zinagkouma/Private-Image-Gallery-App). Моя часть:
