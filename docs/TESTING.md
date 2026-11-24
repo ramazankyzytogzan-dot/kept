@@ -26,7 +26,7 @@
 Перед запуском приложение должно работать (`npm run dev`), иначе тесты падают.
  
 ```bash
-pytest test_sam.py -v
+pytest tests/test_sam.py -v
 ```
  
 ![Результат pytest](images/testing/pytest-sam.png)
