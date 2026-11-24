@@ -9,7 +9,7 @@
 Само приложение тоже отдаёт страницу с текущим состоянием: статус, имя пода, время работы в секундах, число обработанных запросов, число ошибок и использование памяти процессом. Приложение работает в кластере и доступно по внешнему IP-адресу. Интерфейс страницы на казахском: «Қосымша күйі» — состояние приложения, «Жұмыс уақыты» — время работы, «Сұраныстар саны» — число запросов.
 
 <div align="center">
-  <img src="images/monitoring/system-monitoring.png" alt="Страница состояния приложения" width="85%">
+  <img src="images/monitoring/system-monitoring.png" alt="Страница состояния приложения" width="95%">
   <br>
   <i>Страница состояния приложения, работающего в кластере</i>
 </div>
@@ -21,7 +21,7 @@
 В OCI Monitoring настроен аларм на загрузку CPU. Когда метрика превышает порог, аларм переходит в состояние Firing и через сервис Notifications отправляет письмо на почту. Когда нагрузка падает, аларм возвращается в состояние OK.
 
 <div align="center">
-  <img src="images/monitoring/oci-alarms.png" alt="Список алармов в OCI" width="85%">
+  <img src="images/monitoring/oci-alarms.png" alt="Список алармов в OCI" width="95%">
   <br>
   <i>Список алармов в OCI Monitoring</i>
 </div>
@@ -43,7 +43,7 @@ kubectl run cpu-stress --image=busybox --restart=Never -- /bin/sh -c "yes > /dev
 До запуска на обоих узлах загрузка CPU была 3–4%. Через пару минут после запуска на одном узле она достигла 2000m (109%), на втором осталась около 3%. Память не изменилась и осталась на уровне 15%.
 
 <div align="center">
-  <img src="images/monitoring/k8s-cpu-stress.png" alt="Нагрузка на CPU в кластере" width="85%">
+  <img src="images/monitoring/k8s-cpu-stress.png" alt="Нагрузка на CPU в кластере" width="95%">
   <br>
   <i>Искусственная нагрузка на CPU в кластере (kubectl top nodes до и после запуска)</i>
 </div>
@@ -75,7 +75,7 @@ kubectl run cpu-stress --image=busybox --restart=Never -- /bin/sh -c "yes > /dev
 Нагрузка видна и на общем дашборде OCI. На графике CPU Utilization виден пик примерно до 50%, который держится несколько минут и затем возвращается к исходному уровню (запуск 23 ноября, около 18:45). Память и сетевой трафик при этом почти не изменились.
 
 <div align="center">
-  <img src="images/monitoring/oci-dashboard.png" alt="Дашборд OCI" width="85%">
+  <img src="images/monitoring/oci-dashboard.png" alt="Дашборд OCI" width="95%">
   <br>
   <i>Дашборд в Oracle Cloud: CPU, память, сеть, состояние кластера</i>
 </div>
