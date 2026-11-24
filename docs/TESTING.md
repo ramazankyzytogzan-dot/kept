@@ -30,6 +30,13 @@
 pytest tests/test_sam.py -v
 
 ```
+<div align="center">
+  <img src="images/testing/pytest-sam.png" alt="Результат pytest" width="85%">
+  <br>
+  <i>Результат прохождения автотестов pytest</i>
+</div>
+
+<br>
 
 ## Нагрузочные тесты
 
@@ -45,6 +52,27 @@ pytest tests/test_sam.py -v
 | 25 | 20 с | 500 | 24.49 | 13.85 мс | 10.76 мс | 34.23 мс | 52.95 мс | 0% |
 | 50 | 30 с | 1500 | 49.06 | 13.52 мс | 11.44 мс | 36.19 мс | 53.89 мс | 0% |
 
+<div align="center">
+  <img src="images/testing/k6-10vus.jpg" alt="k6, 10 VU" width="85%">
+  <br>
+  <i>Нагрузочный тест k6: 10 виртуальных пользователей (VU)</i>
+</div>
+
+<br>
+
+<div align="center">
+  <img src="images/testing/k6-25vus.jpg" alt="k6, 25 VU" width="85%">
+  <br>
+  <i>Нагрузочный тест k6: 25 виртуальных пользователей (VU)</i>
+</div>
+
+<br>
+
+<div align="center">
+  <img src="images/testing/k6-50vus.jpg" alt="k6, 50 VU" width="85%">
+  <br>
+  <i>Нагрузочный тест k6: 50 виртуальных пользователей (VU)</i>
+</div>
 ### Stress и spike
 
 Stress поднимает нагрузку ступенями до 150 пользователей. Spike резко увеличивает нагрузку, максимум в нём 120 пользователей.
@@ -57,7 +85,7 @@ Stress поднимает нагрузку ступенями до 150 поль�
 Запуск на примере stress-теста:
 
 ```powershell
-.\k6-v0.49.0-windows-amd64\k6.exe run --summary-export=reports/res_stress.json tests/stress-test.js
+.\tests\k6-v0.49.0-windows-amd64\k6.exe run --summary-export=reports/res_stress.json tests/stress-test.js
 
 ```
 
@@ -75,7 +103,7 @@ Stress поднимает нагрузку ступенями до 150 поль�
 `generate_data.py` создаёт тестовые данные с фиксированным seed (`random.seed(42)`), поэтому при каждом запуске результат одинаковый.
 
 ```bash
-python generate_data.py
+python tests/generate_data.py
 
 ```
 
